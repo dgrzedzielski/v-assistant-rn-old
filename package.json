@@ -1,5 +1,5 @@
 {
-  "name": "VAssistant",
+  "name": "v-assistant",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,12 +10,27 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.35",
-    "@emotion/native": "^10.0.27",
+    "@emotion/cache": "^10.0.29",
+    "@emotion/core": "^11.0.0-next.10",
+    "@emotion/native": "^11.0.0-next.15",
+    "@emotion/react": "^11.0.0-next.16",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/bottom-tabs": "^5.8.0",
+    "@react-navigation/material-bottom-tabs": "^5.2.16",
+    "@react-navigation/native": "^5.7.3",
+    "@react-navigation/stack": "^5.9.0",
+    "@reduxjs/toolkit": "^1.4.0",
     "react": "16.13.1",
     "react-i18next": "^11.7.2",
     "react-native": "0.63.2",
-    "react-navigation": "^4.4.0"
+    "react-native-gesture-handler": "^1.8.0",
+    "react-native-paper": "^4.1.0",
+    "react-native-reanimated": "^1.13.0",
+    "react-native-safe-area-context": "^3.1.7",
+    "react-native-screens": "^2.10.1",
+    "react-native-vector-icons": "^7.0.0",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -23,6 +38,8 @@
     "@react-native-community/eslint-config": "^1.1.0",
     "@types/jest": "^25.2.3",
     "@types/react-native": "^0.63.2",
+    "@types/react-native-vector-icons": "^6.4.5",
+    "@types/react-redux": "^7.1.9",
     "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
@@ -30,8 +47,9 @@
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.13.1",
     "prettier": "^2.0.4",
+    "react-native-clean-project": "^3.4.0",
+    "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
   },
   "jest": {
