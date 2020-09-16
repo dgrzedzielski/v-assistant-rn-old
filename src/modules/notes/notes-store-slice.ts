@@ -31,7 +31,7 @@ const notesSlice = createSlice({
       // TODO implement
     },
     removeNoteSuccess(state, action: PayloadAction<string>) {
-      state.items = state.items.filter(({ id }) => id === action.payload);
+      state.items = state.items.filter(({ id }) => id !== action.payload);
     },
     removeNoteFailure(state, action: PayloadAction<string>) {
       // TODO implement
