@@ -1,15 +1,22 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { AvailableScreens } from 'src/available-screens';
+import { ButtonWithIcon } from 'components/ui/button-with-icon';
 import { NotesListScreen } from './notes-list-screen';
 import { NotesCreateNewScreen } from './notes-create-new-screen';
 import { NotesDetailsScreen } from './notes-details-screen';
-import { AvailableScreens } from 'src/available-screens';
 
-const Stack = createStackNavigator();
+export type NotesStackParamList = {
+  [AvailableScreens.NotesList]: undefined;
+  [AvailableScreens.NotesCreateNew]: undefined;
+  [AvailableScreens.NotesDetails]: { id: string };
+};
 
-export const NotesScreen: React.FC = () => {
+const Stack = createStackNavigator<NotesStackParamList>();
+
+export const NotesStackScreen: React.FC = () => {
   return (
-    <Stack.Navigator initialRouteName="Notes.List">
+    <Stack.Navigator initialRouteName={AvailableScreens.NotesList}>
       <Stack.Screen
         name={AvailableScreens.NotesList}
         component={NotesListScreen}
@@ -23,6 +30,7 @@ export const NotesScreen: React.FC = () => {
       <Stack.Screen
         name={AvailableScreens.NotesDetails}
         component={NotesDetailsScreen}
+        options={{ title: '' }}
       />
     </Stack.Navigator>
   );

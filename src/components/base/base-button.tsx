@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/native';
 import { colors } from 'styles/colors';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ButtonContainer = styled.TouchableOpacity`
   background: ${colors.accent};
@@ -15,17 +16,19 @@ const ButtonText = styled.Text`
 `;
 
 type BaseButtonProps = {
-  children: React.ReactNode;
   onPress: () => void;
+  children?: React.ReactNode;
+  icon?: string;
 };
 
 export const BaseButton: React.FC<BaseButtonProps> = ({
   children,
   onPress,
+  icon,
 }) => {
   return (
     <ButtonContainer onPress={onPress}>
-      <ButtonText>{children}</ButtonText>
+      {icon ? <Icon name={icon} /> : <ButtonText>{children}</ButtonText>}
     </ButtonContainer>
   );
 };

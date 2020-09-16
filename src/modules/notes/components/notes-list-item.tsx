@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from '@emotion/native';
 import { colors } from 'src/styles/colors';
+import { useNavigation } from '@react-navigation/native';
+import { AvailableScreens } from 'src/available-screens';
 
 type NotesListItemProps = {
+  id: string;
   title: string;
   content: string;
 };
@@ -10,18 +13,19 @@ type NotesListItemProps = {
 const Wrapper = styled.View`
   flex-basis: 50%;
   padding: 0 10px;
+  max-height: 300px;
+  margin-bottom: 20px;
 `;
 
 const Container = styled.TouchableOpacity`
   elevation: 3;
   background: ${colors.panelBg};
-  margin-bottom: 20px;
+  height: 100%;
 `;
 
 const TitleContainer = styled.View`
   border-bottom: 1px solid ${colors.inputBorder};
-  height: 40px;
-  padding: 16px;
+  padding: 12px 16px;
 `;
 
 const Title = styled.Text`
@@ -29,23 +33,38 @@ const Title = styled.Text`
   color: ${colors.white};
 `;
 
+const ContentContainer = styled.View`
+  padding: 12px 16px 16px;
+`;
+
 const Content = styled.Text`
   font-size: 14px;
-  padding: 16px;
   color: ${colors.white};
+  max-height: 230px;
+  overflow: hidden;
 `;
 
 export const NotesListItem: React.FC<NotesListItemProps> = ({
+  id,
   title,
   content,
 }) => {
+  const navigation = useNavigation();
+  const goToNoteDetails = () => {
+    navigation.navigate(AvailableScreens.NotesDetails, {
+      id,
+    });
+  };
+
   return (
     <Wrapper>
-      <Container>
+      <Container onPress={goToNoteDetails}>
         <TitleContainer>
           <Title>{title}</Title>
         </TitleContainer>
-        <Content>{content}</Content>
+        <ContentContainer>
+          <Content>{content}</Content>
+        </ContentContainer>
       </Container>
     </Wrapper>
   );

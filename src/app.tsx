@@ -4,7 +4,7 @@ import { store } from './store';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
-import { NotesScreen } from 'modules/notes/notes-screen';
+import { NotesStackScreen } from 'modules/notes/notes-stack-screen';
 import { TodosScreen } from 'modules/todos/todos-screen';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -18,7 +18,7 @@ const App = () => {
             <Tab.Navigator initialRouteName="Notes">
               <Tab.Screen
                 name="Notes"
-                component={NotesScreen}
+                component={NotesStackScreen}
                 options={{ title: 'Notes' }}
               />
               <Tab.Screen
