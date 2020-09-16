@@ -1,37 +1,48 @@
 import React from 'react';
-import styled from '@emotion/native';
+import { Pressable, Text, StyleSheet, PressableProps } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from 'styles/colors';
 
-type ButtonAddProps = {
+type ButtonAddProps = Omit<PressableProps, 'children'> & {
   onPress: () => void;
   icon: string;
 };
 
-const ButtonContainer = styled.TouchableOpacity`
-  background-color: ${colors.accent};
-  width: 48px;
-  height: 48px;
-  border-radius: 24px;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  z-index: 1000;
-`;
-
-const ButtonText = styled.Text`
-  font-size: 20px;
-  color: ${colors.white};
-`;
-
-export const ButtonFloating: React.FC<ButtonAddProps> = ({ onPress, icon }) => {
+export const ButtonFloating: React.FC<ButtonAddProps> = ({
+  onPress,
+  icon,
+  style,
+  ...props
+}) => {
   return (
-    <ButtonContainer onPress={onPress}>
-      <ButtonText>
+    <Pressable
+      android_ripple={{ radius: 24, color: colors.white }}
+      onPress={onPress}
+      // @ts-ignore
+      style={[styles.pressable, style]}
+      {...props}>
+      <Text style={styles.text}>
         <Icon name={icon} size={24} />
-      </ButtonText>
-    </ButtonContainer>
+      </Text>
+    </Pressable>
   );
 };
+
+const styles = StyleSheet.create({
+  pressable: {
+    backgroundColor: colors.accent,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    right: 24,
+    bottom: 24,
+    zIndex: 1000,
+  },
+  text: {
+    fontSize: 20,
+    color: colors.white,
+  },
+});

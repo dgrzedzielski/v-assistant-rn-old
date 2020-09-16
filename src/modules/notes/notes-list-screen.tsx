@@ -8,6 +8,7 @@ import { AvailableScreens } from 'src/available-screens';
 import { NotesListItem } from 'modules/notes/components/notes-list-item';
 import { fetchNotes, selectNotesItems } from 'modules/notes/notes-store-slice';
 import { ButtonWithIcon } from 'components/ui/button-with-icon';
+import { ButtonFloating } from 'components/ui/button-floating';
 
 export const NotesListScreen: React.FC = () => {
   const notes = useSelector(selectNotesItems);
@@ -16,20 +17,16 @@ export const NotesListScreen: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchNotes());
-    navigation.setOptions({
-      headerRight: () => (
-        <ButtonWithIcon
-          icon="add"
-          onPress={(): void =>
-            navigation.navigate(AvailableScreens.NotesCreateNew)
-          }
-        />
-      ),
-    });
   }, [dispatch, navigation]);
 
   return (
     <BaseContainer>
+      <ButtonFloating
+        icon="plus"
+        onPress={(): void =>
+          navigation.navigate(AvailableScreens.NotesCreateNew)
+        }
+      />
       <FlatList
         data={notes}
         numColumns={2}

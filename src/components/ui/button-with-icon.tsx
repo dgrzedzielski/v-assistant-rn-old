@@ -1,31 +1,38 @@
 import React from 'react';
-import styled from '@emotion/native';
+import { Pressable, StyleSheet, PressableProps } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { colors } from 'styles/colors';
 
-const ButtonContainer = styled.Pressable`
-  padding: 12px;
-`;
-
-const ButtonIcon = styled(Icon)`
-  color: ${colors.white};
-  font-size: 24px;
-`;
-
-type ButtonWithIconProps = {
+type ButtonWithIconProps = Omit<PressableProps, 'children'> & {
   icon: string;
   onPress: () => void;
+  children?: undefined;
 };
 
 export const ButtonWithIcon: React.FC<ButtonWithIconProps> = ({
   icon,
   onPress,
+  style,
+  ...props
 }) => {
   return (
-    <ButtonContainer
+    <Pressable
       onPress={onPress}
-      android_ripple={{ color: colors.white, radius: 18 }}>
-      <ButtonIcon name={icon} />
-    </ButtonContainer>
+      android_ripple={{ color: colors.white, radius: 18 }}
+      // @ts-ignore
+      style={[styles.pressable, style]}
+      {...props}>
+      <Icon name={icon} style={styles.icon} />
+    </Pressable>
   );
 };
+
+const styles = StyleSheet.create({
+  pressable: {
+    padding: 12,
+  },
+  icon: {
+    fontSize: 24,
+    color: colors.white,
+  },
+});

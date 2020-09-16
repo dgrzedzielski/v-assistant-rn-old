@@ -1,10 +1,15 @@
 import React from 'react';
-import styled from '@emotion/native';
-import { StyleProp, TextStyle } from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TextInput,
+  TextStyle,
+  View,
+} from 'react-native';
 import { colors } from 'styles/colors';
 
 type TextInputGroupProps = {
-  label: string;
+  label?: string;
   value: string;
   onChangeText: (val: string) => void;
   placeholder?: string;
@@ -12,25 +17,6 @@ type TextInputGroupProps = {
   numberOfLines?: number;
   style?: StyleProp<TextStyle>;
 };
-
-const Container = styled.View`
-  margin-bottom: 16px;
-`;
-
-const Input = styled.TextInput`
-  border-radius: 4px;
-  background: ${colors.inputBg};
-  border: 1px solid ${colors.inputBorder};
-  width: 100%;
-  color: ${colors.white};
-  padding: 8px 16px;
-  align-items: flex-start;
-`;
-
-const Label = styled.Text`
-  color: ${colors.white};
-  margin-bottom: 4px;
-`;
 
 export const TextInputGroup: React.FC<TextInputGroupProps> = ({
   value,
@@ -42,16 +28,31 @@ export const TextInputGroup: React.FC<TextInputGroupProps> = ({
   style,
 }) => {
   return (
-    <Container>
-      <Label>{label}</Label>
-      <Input
+    <View style={styles.container}>
+      <TextInput
+        placeholderTextColor={colors.gray800}
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
         multiline={multiline}
         numberOfLines={numberOfLines}
-        style={style}
+        style={[styles.input, style]}
       />
-    </Container>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {},
+  input: {
+    width: '100%',
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+    alignItems: 'flex-start',
+    color: colors.white,
+    backgroundColor: colors.inputBg,
+    textAlignVertical: 'top',
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+  },
+});

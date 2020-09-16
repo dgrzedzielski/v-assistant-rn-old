@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
+import { AvailableScreens } from 'src/available-screens';
+import { NotesStackParamList } from 'modules/notes/notes-stack-screen';
+import { removeNote, selectNotesItems } from 'modules/notes/notes-store-slice';
 import { BaseContainer } from 'components/base/base-container';
 import { BaseText } from 'components/base/base-text';
-import { RootState } from 'src/root-reducer';
-import { NotesStackParamList } from 'modules/notes/notes-stack-screen';
-import { AvailableScreens } from 'src/available-screens';
 import { ButtonWithIcon } from 'components/ui/button-with-icon';
-import { removeNote, selectNotesItems } from 'modules/notes/notes-store-slice';
 
 type NotesDetailsScreenRouteProps = RouteProp<
   NotesStackParamList,

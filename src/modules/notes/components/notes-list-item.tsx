@@ -1,48 +1,14 @@
 import React from 'react';
-import styled from '@emotion/native';
 import { colors } from 'src/styles/colors';
 import { useNavigation } from '@react-navigation/native';
 import { AvailableScreens } from 'src/available-screens';
+import { Pressable, StyleSheet, View, Text } from 'react-native';
 
 type NotesListItemProps = {
   id: string;
   title: string;
   content: string;
 };
-
-const Wrapper = styled.View`
-  flex-basis: 50%;
-  padding: 0 10px;
-  max-height: 300px;
-  margin-bottom: 20px;
-`;
-
-const Container = styled.TouchableOpacity`
-  elevation: 3;
-  background: ${colors.panelBg};
-  height: 100%;
-`;
-
-const TitleContainer = styled.View`
-  border-bottom: 1px solid ${colors.inputBorder};
-  padding: 12px 16px;
-`;
-
-const Title = styled.Text`
-  font-size: 20px;
-  color: ${colors.white};
-`;
-
-const ContentContainer = styled.View`
-  padding: 12px 16px 16px;
-`;
-
-const Content = styled.Text`
-  font-size: 14px;
-  color: ${colors.white};
-  max-height: 230px;
-  overflow: hidden;
-`;
 
 export const NotesListItem: React.FC<NotesListItemProps> = ({
   id,
@@ -57,15 +23,50 @@ export const NotesListItem: React.FC<NotesListItemProps> = ({
   };
 
   return (
-    <Wrapper>
-      <Container onPress={goToNoteDetails}>
-        <TitleContainer>
-          <Title>{title}</Title>
-        </TitleContainer>
-        <ContentContainer>
-          <Content>{content}</Content>
-        </ContentContainer>
-      </Container>
-    </Wrapper>
+    <View style={styles.wrapper}>
+      <Pressable
+        onPress={goToNoteDetails}
+        android_ripple={{ color: colors.white }}
+        style={styles.pressable}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+        <View style={styles.contentContainer}>
+          <Text style={styles.content}>{content}</Text>
+        </View>
+      </Pressable>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flexBasis: '50%',
+    paddingHorizontal: 10,
+    maxHeight: 300,
+    marginBottom: 20,
+  },
+  pressable: {
+    height: '100%',
+    elevation: 3,
+    backgroundColor: colors.panelBg,
+  },
+  titleContainer: {
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
+  title: {
+    fontSize: 20,
+    color: colors.white,
+  },
+  contentContainer: {
+    padding: 16,
+  },
+  content: {
+    fontSize: 14,
+    color: colors.white,
+    maxHeight: 230,
+  },
+});
