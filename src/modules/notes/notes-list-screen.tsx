@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import { BaseContainer } from 'components/base/base-container';
 import { AvailableScreens } from 'core/available-screens';
 import { NotesListItem } from 'modules/notes/components/notes-list-item';
 import { fetchNotes, selectNotesItems } from 'modules/notes/notes-store-slice';
+import { BaseContainer } from 'components/base/base-container';
 import { ButtonFloating } from 'components/ui/button-floating';
 
 export const NotesListScreen: React.FC = () => {
@@ -28,9 +28,7 @@ export const NotesListScreen: React.FC = () => {
       <FlatList
         data={notes}
         numColumns={2}
-        contentContainerStyle={{
-          marginHorizontal: -10,
-        }}
+        contentContainerStyle={styles.contentContainer}
         renderItem={({ item }) => (
           <NotesListItem
             title={item.title}
@@ -43,3 +41,9 @@ export const NotesListScreen: React.FC = () => {
     </BaseContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    marginHorizontal: -10,
+  },
+});

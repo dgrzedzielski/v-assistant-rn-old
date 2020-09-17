@@ -5,6 +5,7 @@ import {
   TextInput,
   TextStyle,
   View,
+  Text,
 } from 'react-native';
 import { colors } from 'styles/colors';
 
@@ -29,6 +30,7 @@ export const TextInputGroup: React.FC<TextInputGroupProps> = ({
 }) => {
   return (
     <View style={styles.container}>
+      {label ? <Text style={styles.label}>{label}</Text> : null}
       <TextInput
         placeholderTextColor={colors.gray800}
         value={value}
@@ -44,6 +46,10 @@ export const TextInputGroup: React.FC<TextInputGroupProps> = ({
 
 const styles = StyleSheet.create({
   container: {},
+  label: {
+    marginBottom: 4,
+    color: colors.white,
+  },
   input: {
     width: '100%',
     paddingHorizontal: 24,

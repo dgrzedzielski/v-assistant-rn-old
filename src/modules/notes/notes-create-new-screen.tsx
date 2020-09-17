@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { KeyboardAvoidingView } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { uuid } from 'helpers/uuid';
@@ -36,7 +36,7 @@ export const NotesCreateNewScreen: React.FC = () => {
   }, [navigation, saveNote]);
 
   return (
-    <BaseContainer style={{ padding: 0 }}>
+    <BaseContainer style={styles.container}>
       <KeyboardAvoidingView>
         <TextInputGroup
           placeholder="Title"
@@ -54,3 +54,7 @@ export const NotesCreateNewScreen: React.FC = () => {
     </BaseContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  container: { padding: 0 },
+});

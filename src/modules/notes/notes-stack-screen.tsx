@@ -1,7 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AvailableScreens } from 'core/available-screens';
-import { ButtonWithIcon } from 'components/ui/button-with-icon';
 import { NotesListScreen } from './notes-list-screen';
 import { NotesCreateNewScreen } from './notes-create-new-screen';
 import { NotesDetailsScreen } from './notes-details-screen';
