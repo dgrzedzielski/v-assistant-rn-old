@@ -5,28 +5,28 @@ import { TextInputGroup } from 'components/ui/text-input-group';
 
 type NotesFormProps = {
   value: NoteFormModel;
-  onChange: (
-    key: keyof NoteFormModel,
-    value: NoteFormModel[keyof NoteFormModel],
-  ) => void;
+  onChange: {
+    setTitle: React.Dispatch<React.SetStateAction<string>>;
+    setContent: React.Dispatch<React.SetStateAction<string>>;
+  };
 };
 
 export const NotesForm: React.FC<NotesFormProps> = ({
   value: { content, title },
-  onChange,
+  onChange: { setTitle, setContent },
 }) => {
   return (
     <>
       <TextInputGroup
         placeholder="Title"
         value={title}
-        onChangeText={(val): void => onChange('title', val)}
+        onChangeText={setTitle}
         style={styles.titleInput}
       />
       <TextInputGroup
         placeholder="Content..."
         value={content}
-        onChangeText={(val): void => onChange('content', val)}
+        onChangeText={setContent}
         multiline
         numberOfLines={32}
         style={styles.contentInput}

@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { uuid } from 'helpers/uuid';
 import { AvailableScreens } from 'core/available-screens';
-import { NoteFormModel } from 'modules/notes/notes-types';
 import { BaseContainer } from 'components/base/base-container';
 import { ButtonWithIcon } from 'components/ui/button-with-icon';
 import { NotesForm } from './components/notes-form';
@@ -15,18 +14,6 @@ export const NotesCreateNewScreen: React.FC = () => {
   const [content, setContent] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
-
-  const handleFormChange = (
-    key: keyof NoteFormModel,
-    value: NoteFormModel[keyof NoteFormModel],
-  ) => {
-    const setter = {
-      title: setTitle,
-      content: setContent,
-    };
-
-    setter[key](value);
-  };
 
   const saveNote = useCallback(() => {
     dispatch(
@@ -50,7 +37,10 @@ export const NotesCreateNewScreen: React.FC = () => {
   return (
     <BaseContainer style={styles.container}>
       <KeyboardAvoidingView>
-        <NotesForm value={{ title, content }} onChange={handleFormChange} />
+        <NotesForm
+          value={{ title, content }}
+          onChange={{ setTitle, setContent }}
+        />
       </KeyboardAvoidingView>
     </BaseContainer>
   );
