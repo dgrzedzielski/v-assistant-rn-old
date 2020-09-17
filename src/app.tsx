@@ -3,11 +3,12 @@ import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { NotesStackScreen } from 'modules/notes/notes-stack-screen';
 import { TodosScreen } from 'modules/todos/todos-screen';
 import { colors } from 'styles/colors';
 import { store } from './store';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { StyleSheet } from 'react-native';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -20,7 +21,8 @@ const App = () => {
             <Tab.Navigator
               initialRouteName="Notes"
               activeColor={colors.primary}
-              inactiveColor={colors.gray900}>
+              inactiveColor={colors.gray900}
+              barStyle={styles.tabBar}>
               <Tab.Screen
                 name="Notes"
                 component={NotesStackScreen}
@@ -60,5 +62,13 @@ const App = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBar: {
+    backgroundColor: colors.panelBg,
+    borderTopColor: colors.border,
+    borderTopWidth: 1,
+  },
+});
 
 export default App;
