@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppDispatch, AppThunk } from 'core/store';
 import { getItem, setItem } from 'helpers/storage';
 import { RootState } from 'core/root-reducer';
-import { Note } from './types';
+import { Note } from 'modules/notes/notes-types';
 
 const STORAGE_KEY = 'NOTES';
 
