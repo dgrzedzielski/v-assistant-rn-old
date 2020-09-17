@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
-import { AvailableScreens } from 'src/available-screens';
+import { AvailableScreens } from 'core/available-screens';
 import { NotesStackParamList } from 'modules/notes/notes-stack-screen';
 import { removeNote, selectNotesItems } from 'modules/notes/notes-store-slice';
 import { BaseContainer } from 'components/base/base-container';

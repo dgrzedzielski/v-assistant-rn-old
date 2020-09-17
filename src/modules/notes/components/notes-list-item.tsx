@@ -1,8 +1,8 @@
 import React from 'react';
-import { colors } from 'src/styles/colors';
-import { useNavigation } from '@react-navigation/native';
-import { AvailableScreens } from 'src/available-screens';
 import { Pressable, StyleSheet, View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { AvailableScreens } from 'core/available-screens';
+import { colors } from 'styles/colors';
 
 type NotesListItemProps = {
   id: string;

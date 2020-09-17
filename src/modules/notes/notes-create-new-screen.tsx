@@ -3,7 +3,7 @@ import { KeyboardAvoidingView } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { uuid } from 'helpers/uuid';
-import { AvailableScreens } from 'src/available-screens';
+import { AvailableScreens } from 'core/available-screens';
 import { Note } from 'modules/notes/types';
 import { TextInputGroup } from 'components/ui/text-input-group';
 import { BaseContainer } from 'components/base/base-container';
