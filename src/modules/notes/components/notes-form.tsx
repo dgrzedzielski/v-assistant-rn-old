@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { NoteFormModel } from 'modules/notes/notes-types';
 import { TextInputGroup } from 'components/ui/text-input-group';
 
@@ -20,6 +21,7 @@ export const NotesForm: React.FC<NotesFormProps> = ({
         placeholder="Title"
         value={title}
         onChangeText={(val): void => onChange('title', val)}
+        style={styles.titleInput}
       />
       <TextInputGroup
         placeholder="Content..."
@@ -27,7 +29,17 @@ export const NotesForm: React.FC<NotesFormProps> = ({
         onChangeText={(val): void => onChange('content', val)}
         multiline
         numberOfLines={32}
+        style={styles.contentInput}
       />
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  titleInput: {
+    fontSize: 20,
+  },
+  contentInput: {
+    fontSize: 16,
+  },
+});
