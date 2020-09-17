@@ -29,7 +29,9 @@ export const NotesCreateNewScreen: React.FC = () => {
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <ButtonWithIcon icon="save" onPress={saveNote} />,
+      headerRight: () => (
+        <ButtonWithIcon icon="content-save" onPress={saveNote} />
+      ),
     });
   }, [navigation, saveNote]);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, StyleSheet, PressableProps } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from 'styles/colors';
 
 type ButtonWithIconProps = Omit<PressableProps, 'children'> & {

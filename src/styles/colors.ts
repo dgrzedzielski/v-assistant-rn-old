@@ -6,6 +6,7 @@ export const colors = {
   primary: 'hsl(210, 100%, 55%)',
 
   white: 'hsl(0, 0%, 100%)',
+  gray900: 'hsl(0, 0%, 90%)',
   gray800: 'hsl(0, 0%, 80%)',
   black: 'hsl(0, 0%, 0%)',
 
