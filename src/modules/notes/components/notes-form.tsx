@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { NoteFormModel } from 'modules/notes/notes-types';
+import { NoteFormModel } from 'modules/notes/notes.types';
 import { TextInputGroup } from 'components/ui/text-input-group';
 
 type NotesFormProps = {

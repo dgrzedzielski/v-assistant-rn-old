@@ -3,7 +3,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from 'styles/colors';
-import { NotesStackScreen } from 'modules/notes/notes-stack-screen';
+import { NotesStackScreen } from 'modules/notes/notes-stack.screen';
 import { TodosScreen } from 'modules/todos/todos-screen';
 
 const Tab = createMaterialBottomTabNavigator();

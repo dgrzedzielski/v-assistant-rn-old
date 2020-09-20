@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
 import { AvailableScreens } from 'core/available-screens';
-import { NotesStackParamList } from 'modules/notes/notes-stack-screen';
+import { NotesStackParamList } from 'modules/notes/notes-stack.screen';
 import { BaseContainer } from 'components/base/base-container';
 import { ButtonWithIcon } from 'components/ui/button-with-icon';
 import { NotesForm } from 'modules/notes/components/notes-form';
-import { removeNote, selectNotesItems, editNote } from './notes-store-slice';
+import { removeNote, selectNotesItems, editNote } from 'src/modules/notes/notes.store.slice';
 
 type NotesDetailsScreenRouteProps = RouteProp<
   NotesStackParamList,

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { AvailableScreens } from 'core/available-screens';
 import { NotesListItem } from 'modules/notes/components/notes-list-item';
-import { fetchNotes, selectNotesItems } from 'modules/notes/notes-store-slice';
+import { fetchNotes, selectNotesItems } from 'modules/notes/notes.store.slice';
 import { BaseContainer } from 'components/base/base-container';
 import { ButtonFloating } from 'components/ui/button-floating';
 
