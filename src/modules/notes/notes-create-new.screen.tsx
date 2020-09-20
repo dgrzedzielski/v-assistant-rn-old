@@ -7,7 +7,7 @@ import { AvailableScreens } from 'core/available-screens';
 import { BaseContainer } from 'components/base/base-container';
 import { ButtonWithIcon } from 'components/ui/button-with-icon';
 import { NotesForm } from './components/notes-form';
-import { addNote } from 'src/modules/notes/notes.store.slice';
+import { addNote } from 'modules/notes/notes.store.slice';
 
 export const NotesCreateNewScreen: React.FC = () => {
   const [title, setTitle] = useState('');

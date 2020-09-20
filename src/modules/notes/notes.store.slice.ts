@@ -3,9 +3,7 @@ import { AppDispatch, AppThunk } from 'core/store';
 import { getItem, setItem } from 'helpers/storage';
 import { RootState } from 'core/root-reducer';
 import { Note } from 'modules/notes/notes.types';
-import App from 'react-native-safe-area-context/lib/typescript/example/src/App';
-
-const STORAGE_KEY = 'NOTES';
+import { fetchAllNotes, NotesService } from 'modules/notes/notes.service';
 
 type NotesState = {
   items: Array<Note>;
@@ -60,7 +58,8 @@ export const {
 
 export const fetchNotes = (): AppThunk => async (dispatch: AppDispatch) => {
   try {
-    const notes = await getItem<Note[]>(STORAGE_KEY);
+    const notes = await NotesService.fetchNotes();
+
     if (notes) {
       dispatch(fetchNotesSuccess(notes));
     }
@@ -71,51 +70,27 @@ export const fetchNotes = (): AppThunk => async (dispatch: AppDispatch) => {
 
 export const addNote = (payload: Note): AppThunk => async (
   dispatch: AppDispatch,
-  getState,
 ) => {
-  const {
-    notes: { items },
-  } = getState();
-
   try {
-    await setItem(STORAGE_KEY, [...items, payload]);
-    dispatch(addNoteSuccess(payload));
+    const result = await NotesService.addNote(payload);
+    dispatch(addNoteSuccess(result));
   } catch (e) {
     dispatch(addNoteFailure(e.toString()));
   }
 };
 
-export const removeNote = (payload: string): AppThunk => async (
-  dispatch,
-  getState,
-) => {
-  const {
-    notes: { items },
-  } = getState();
-
-  const newNotes = items.filter(({ id }) => id !== payload);
-
+export const removeNote = (noteId: string): AppThunk => async (dispatch) => {
   try {
-    await setItem(STORAGE_KEY, newNotes);
-    dispatch(setNotes(newNotes));
+    const result = await NotesService.removeNote(noteId);
+    dispatch(setNotes(result));
   } catch (e) {
     dispatch(removeNoteFailure(e.toString()));
   }
 };
 
-export const editNote = (payload: Note): AppThunk => async (
-  dispatch,
-  getState,
-) => {
-  const {
-    notes: { items },
-  } = getState();
-
+export const editNote = (newNote: Note): AppThunk => async (dispatch) => {
   try {
-    const index = items.findIndex(({ id }) => id === payload.id);
-    const editedNotes = [...items];
-    editedNotes.splice(index, 1, payload);
-    await setItem(STORAGE_KEY, editedNotes);
+    const editedNotes = await NotesService.editNote(newNote);
     dispatch(setNotes(editedNotes));
   } catch (e) {
     dispatch(editNoteFailure(e.toString()));

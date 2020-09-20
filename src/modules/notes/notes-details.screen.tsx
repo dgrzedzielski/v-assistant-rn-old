@@ -7,7 +7,11 @@ import { NotesStackParamList } from 'modules/notes/notes-stack.screen';
 import { BaseContainer } from 'components/base/base-container';
 import { ButtonWithIcon } from 'components/ui/button-with-icon';
 import { NotesForm } from 'modules/notes/components/notes-form';
-import { removeNote, selectNotesItems, editNote } from 'src/modules/notes/notes.store.slice';
+import {
+  removeNote,
+  selectNotesItems,
+  editNote,
+} from 'modules/notes/notes.store.slice';
 
 type NotesDetailsScreenRouteProps = RouteProp<
   NotesStackParamList,
@@ -19,14 +23,22 @@ export const NotesDetailsScreen: React.FC = () => {
   const { params } = useRoute<NotesDetailsScreenRouteProps>();
   const navigation = useNavigation();
   const notes = useSelector(selectNotesItems);
-  const note = notes.find(({ id }) => id === params?.id)!;
-  const [title, setTitle] = useState(note.title);
-  const [content, setContent] = useState(note.content);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    const note = notes.find(({ id }) => id === params?.id);
+
+    if (note) {
+      setTitle(note.title);
+      setContent(note.content);
+    }
+  }, [notes, params]);
 
   const handleSaveNote = useCallback(() => {
-    dispatch(editNote({ content, title, id: note.id }));
+    dispatch(editNote({ content, title, id: params?.id }));
     navigation.navigate(AvailableScreens.NotesList);
-  }, [content, dispatch, navigation, note.id, title]);
+  }, [content, dispatch, navigation, params, title]);
 
   const handleDeleteNote = useCallback(() => {
     dispatch(removeNote(params.id));
