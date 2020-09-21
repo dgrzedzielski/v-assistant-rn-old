@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppDispatch, AppThunk } from 'core/store';
-import { getItem, setItem } from 'helpers/storage';
 import { RootState } from 'core/root-reducer';
-import { Note } from 'modules/notes/notes.types';
-import { fetchAllNotes, NotesService } from 'modules/notes/notes.service';
+import { Note, NoteFormModel } from './notes.types';
+import { NotesService } from './notes.service';
 
 type NotesState = {
   items: Array<Note>;
@@ -68,7 +67,7 @@ export const fetchNotes = (): AppThunk => async (dispatch: AppDispatch) => {
   }
 };
 
-export const addNote = (payload: Note): AppThunk => async (
+export const addNote = (payload: NoteFormModel): AppThunk => async (
   dispatch: AppDispatch,
 ) => {
   try {
@@ -98,3 +97,6 @@ export const editNote = (newNote: Note): AppThunk => async (dispatch) => {
 };
 
 export const selectNotesItems = (state: RootState) => state.notes.items;
+
+export const selectNote = (noteId: string) => (state: RootState) =>
+  state.notes.items.find(({ id }) => id === noteId);

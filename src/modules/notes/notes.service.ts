@@ -1,5 +1,6 @@
 import { getItem, setItem } from 'helpers/storage';
-import { Note } from './notes.types';
+import { Note, NoteFormModel } from './notes.types';
+import { uuid } from 'helpers/uuid';
 
 const STORAGE_KEY = 'NOTES';
 
@@ -13,8 +14,12 @@ export const NotesService = {
     return result;
   },
 
-  addNote: async (newNote: Note) => {
+  addNote: async (newNoteData: NoteFormModel) => {
     const notes = await NotesService.fetchNotes();
+    const newNote = {
+      ...newNoteData,
+      id: uuid(),
+    };
 
     await setItem(STORAGE_KEY, [...notes, newNote]);
 
