@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Pressable } from 'react-native';
+import { ScrollView, StyleSheet, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from 'styles/colors';
 
@@ -22,21 +22,19 @@ export const NotesColorPicker: React.FC<NotesColorPickerProps> = ({
   };
 
   return (
-    <View style={styles.container}>
-      <ScrollView horizontal={true}>
-        {options.map((option) => (
-          <Pressable
-            key={option}
-            style={{ ...styles.color, backgroundColor: option }}
-            onPress={(): void => handleChange(option)}
-            android_ripple={{ color: colors.white, radius: 16 }}>
-            {value === option ? (
-              <Icon name="check" color={colors.white} size={16} />
-            ) : null}
-          </Pressable>
-        ))}
-      </ScrollView>
-    </View>
+    <ScrollView horizontal={true} style={styles.container}>
+      {options.map((option) => (
+        <Pressable
+          key={option}
+          style={{ ...styles.color, backgroundColor: option }}
+          onPress={(): void => handleChange(option)}
+          android_ripple={{ color: colors.white, radius: 16 }}>
+          {value === option ? (
+            <Icon name="check" color={colors.white} size={16} />
+          ) : null}
+        </Pressable>
+      ))}
+    </ScrollView>
   );
 };
 
@@ -48,7 +46,7 @@ const styles = StyleSheet.create({
     top: 0,
     backgroundColor: colors.panelBg,
     elevation: 15,
-    padding: 10,
+    paddingVertical: 10,
   },
   color: {
     width: 32,

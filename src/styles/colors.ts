@@ -3,8 +3,10 @@ export const notesColors = {
   green: 'hsl(120, 25%, 25%)',
   blue: 'hsl(220, 35%, 28%)',
   purple: 'hsl(260, 35%, 25%)',
-  brown: 'hsl(0, 32% , 13%)',
+  brown: 'hsl(30, 26% , 12%)',
   pink: 'hsl(300, 25%, 30%)',
+  yellow: 'hsl(60, 25%, 18%)',
+  red: 'hsl(0, 35%, 18%)',
 };
 
 export const colors = {
