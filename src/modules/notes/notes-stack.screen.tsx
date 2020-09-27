@@ -2,8 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AvailableScreens } from 'core/available-screens';
 import { NotesListScreen } from './notes-list.screen';
-import { NotesCreateNewScreen } from './notes-create-new.screen';
-import { NotesDetailsScreen } from './notes-details.screen';
+import { NotesFormScreen } from 'modules/notes/notes-form.screen';
 
 export type NotesStackParamList = {
   [AvailableScreens.NotesList]: undefined;
@@ -23,12 +22,12 @@ export const NotesStackScreen: React.FC = () => {
       />
       <Stack.Screen
         name={AvailableScreens.NotesCreateNew}
-        component={NotesCreateNewScreen}
+        component={NotesFormScreen}
         options={{ title: 'Create new note' }}
       />
       <Stack.Screen
         name={AvailableScreens.NotesDetails}
-        component={NotesDetailsScreen}
+        component={NotesFormScreen}
         options={{ title: '' }}
       />
     </Stack.Navigator>
