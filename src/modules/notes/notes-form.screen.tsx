@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Dimensions } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { notesColors } from 'styles/colors';
@@ -11,6 +11,7 @@ import { ButtonWithIcon } from 'components/ui/button-with-icon';
 import { NotesColorPicker } from './components/notes-color-picker';
 import { addNote, editNote, removeNote, selectNote } from './notes.store.slice';
 import { NotesStackParamList } from './notes-stack.screen';
+import { useDimensions } from 'core/hooks/use-dimensions';
 
 type NotesDetailsScreenRouteProps = RouteProp<
   NotesStackParamList,
@@ -26,6 +27,7 @@ export const NotesFormScreen: React.FC = () => {
   const { params } = useRoute<NotesDetailsScreenRouteProps>();
   const navigation = useNavigation();
   const note = useSelector(selectNote(params?.id));
+  const { windowHeight } = useDimensions();
 
   const isEditMode = !!note;
 
@@ -83,7 +85,10 @@ export const NotesFormScreen: React.FC = () => {
             onChangeText={setContent}
             multiline
             numberOfLines={32}
-            style={styles.contentInput}
+            style={{
+              ...styles.contentInput,
+              height: windowHeight - 208,
+            }}
           />
           {shouldShowColorPicker && (
             <NotesColorPicker

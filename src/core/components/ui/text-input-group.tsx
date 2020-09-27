@@ -37,6 +37,7 @@ export const TextInputGroup: React.FC<TextInputGroupProps> = ({
         onChangeText={onChangeText}
         placeholder={placeholder}
         multiline={multiline}
+        scrollEnabled={multiline}
         numberOfLines={numberOfLines}
         style={[styles.input, style]}
       />
