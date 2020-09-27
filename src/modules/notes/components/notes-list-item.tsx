@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     maxHeight: 300,
     marginBottom: 20,
+    overflow: 'hidden',
   },
   pressable: {
     height: '100%',
@@ -69,6 +70,5 @@ const styles = StyleSheet.create({
   content: {
     fontSize: 14,
     color: colors.white,
-    maxHeight: 230,
   },
 });
