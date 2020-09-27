@@ -8,12 +8,14 @@ type NotesListItemProps = {
   id: string;
   title: string;
   content: string;
+  color: string;
 };
 
 export const NotesListItem: React.FC<NotesListItemProps> = ({
   id,
   title,
   content,
+  color,
 }) => {
   const navigation = useNavigation();
   const goToNoteDetails = () => {
@@ -27,7 +29,7 @@ export const NotesListItem: React.FC<NotesListItemProps> = ({
       <Pressable
         onPress={goToNoteDetails}
         android_ripple={{ color: colors.white }}
-        style={styles.pressable}>
+        style={{ ...styles.pressable, backgroundColor: color }}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{title}</Text>
         </View>

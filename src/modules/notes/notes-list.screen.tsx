@@ -34,6 +34,7 @@ export const NotesListScreen: React.FC = () => {
             title={item.title}
             content={item.content}
             id={item.id}
+            color={item.color}
           />
         )}
         keyExtractor={(item) => item.id}

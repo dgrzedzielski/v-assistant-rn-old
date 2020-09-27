@@ -1,4 +1,5 @@
 export const notesColors = {
+  default: 'hsl(210, 0%, 17%)',
   green: 'hsl(120, 25%, 25%)',
   blue: 'hsl(220, 35%, 28%)',
   purple: 'hsl(260, 35%, 25%)',
@@ -18,9 +19,9 @@ export const colors = {
   gray800: 'hsl(0, 0%, 80%)',
   black: 'hsl(0, 0%, 0%)',
 
-  border: 'hsla(210, 100%, 100%, 0.05)',
+  border: 'hsla(210, 100%, 100%, 0.1)',
   panelBg: 'hsl(210, 0%, 17%)',
 
-  inputBg: 'hsl(210, 0%, 17%)',
-  inputBorder: 'hsl(210, 5%, 19%)',
+  inputBg: 'hsla(210, 0%, 17%, 0.1)',
+  inputBorder: 'hsla(210, 5%, 100%, 1)',
 };
